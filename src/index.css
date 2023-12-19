@@ -1,3 +1,13 @@
+@import-normalize; 
+
+:root {
+--main-black: #121417;
+--main-green: #85AA9F;
+--main-bgc: #F8F8F8;
+--main-white: #FCFCFC;
+--green-hover: #A5C0B8;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +20,53 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'FixelDisplay';
+  src: url('./assets/fonts/FixelDisplay/FixelDisplay-Medium.woff2') format('woff2'), url('./assets/fonts/FixelDisplay/FixelDisplay-Medium.otf') format('otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FixelDisplay';
+  src: url('./assets/fonts/FixelDisplay/FixelDisplay-SemiBold.woff2') format('woff2'), url('./assets//fonts//FixelDisplay//FixelDisplay-SemiBold.otf') format('otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FixelDisplay';
+  src: url('./assets//fonts//FixelDisplay/FixelDisplay-Bold.woff2') format('woff2'), url('./assets//fonts//FixelDisplay/FixelDisplay-Bold.otf')  format('otf'); 
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FixelDisplay';
+  src: url('./assets//fonts//FixelDisplay/FixelDisplay-Regular.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('./assets//fonts/SanFranciscoProDisplay/SF-Pro-Display-Light.otf') format('otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('./assets//fonts/SanFranciscoProDisplay/SF-Pro-Display-Regular.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('./assets//fonts/SanFranciscoProText/SFProText-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
 }
