@@ -11,7 +11,7 @@ const RegisterForm = () => {
         },
         onSubmit: values => {
             console.log(values);
-            formik.resetForm;
+            
         }
     })
   return (
@@ -22,9 +22,7 @@ const RegisterForm = () => {
         <input type="text" />
         <input type="email" />
         <input type="password" />
-
-
-
+        <button>Register</button>
       </form>
     </div>
   )
