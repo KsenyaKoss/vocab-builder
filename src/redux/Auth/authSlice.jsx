@@ -38,6 +38,7 @@ const authSlice = createSlice({
       .addCase(getCurrentUserThunk.pending, pending)
       .addCase(getCurrentUserThunk.rejected, rejected)
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
+        console.log(payload);
         state.user = payload;
         state.accessToken = payload.accessToken;
         state.isLoading = false;

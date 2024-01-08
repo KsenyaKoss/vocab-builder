@@ -3,7 +3,7 @@ import Icons from './sprite.svg';
 
 const Icon = ({id}) => {
   return (
-    <svg width={'20px'}>
+    <svg width={'20px'} height={"20px"}>
       <use href={Icons + "#icon-" + id}></use>
     </svg>
   )

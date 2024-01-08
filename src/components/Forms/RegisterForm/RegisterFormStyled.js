@@ -68,9 +68,17 @@ export const InputStyled = styled.input`
   border-radius: 15px;
   border: 1px solid rgba(18, 20, 23, 0.1);
   outline: none;
+
+  &.valid {
+    border-color: green;
+  }
+
+  &.invalid {
+    border-color: red;
+  }
 `;
 
-export const InputPasswordWrp = styled.div`
+export const InputWrp = styled.div`
   max-width: 375px;
   position: relative;
   @media ${devices.tablet} {
@@ -129,3 +137,31 @@ export const StyledLink = styled(NavLink)`
     line-height: calc(28 / 18);
   }
 `;
+
+export const InputWarningWrp = styled.div`
+display: flex;
+gap: 4px;
+align-items: top;
+padding-top: 4px;
+`;
+
+export const StyledError = styled.p`
+color: #D80027;
+font-family: "Fixel Display";
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: calc(18 / 12); 
+letter-spacing: 0.12px;
+`;
+
+export const StyledSuccess = styled.p`
+color: #3CBF61;
+font-family: "Fixel Display";
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: calc(18 / 12); 
+letter-spacing: 0.12px;
+
+`
