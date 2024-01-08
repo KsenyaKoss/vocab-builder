@@ -1,13 +1,14 @@
 import React from 'react'
 import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm'
-import { NavLink } from 'react-router-dom'
+
+import { PageStyled } from './RegisterPage.styled'
 
 const RegisterPage = () => {
   return (
-    <div>
+    <PageStyled>
       <RegisterForm/>
-      <NavLink to="login">Login</NavLink>
-    </div>
+     
+    </PageStyled>
   )
 }
 

@@ -2,10 +2,54 @@
 
 :root {
 --main-black: #121417;
+--secondary-black: rgba(18, 20, 23, 0.80);
 --main-green: #85AA9F;
 --main-bgc: #F8F8F8;
 --main-white: #FCFCFC;
 --green-hover: #A5C0B8;
+--secondary-background: rgba(133, 170, 159, 0.10);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+li {
+  list-style: none;
+}
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+p {
+  padding: 0;
+  margin: 0;
 }
 
 body {
