@@ -23,6 +23,10 @@ export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   gap: 14px;
+
+  @media ${devices.tablet} {
+    gap: 18px;
+  }
 `;
 
 export const TitleStyled = styled.h1`
@@ -32,13 +36,16 @@ export const TitleStyled = styled.h1`
   font-weight: 600;
   line-height: calc(32 / 30);
   letter-spacing: -0.6px;
+  margin-bottom: 16px;
 
   @media ${devices.tablet} {
     font-size: 40px;
     line-height: calc(48 / 40);
     letter-spacing: -0.8px;
+    margin-bottom: 20px;
   }
 `;
+
 export const PStyled = styled.p`
   color: var(--secondary-black);
   font-family: "FixelDisplay";
@@ -62,6 +69,7 @@ export const InputStyled = styled.input`
   border: 1px solid rgba(18, 20, 23, 0.1);
   outline: none;
 `;
+
 export const InputPasswordWrp = styled.div`
   max-width: 375px;
   position: relative;
@@ -69,6 +77,7 @@ export const InputPasswordWrp = styled.div`
     max-width: 628px;
   }
 `;
+
 export const IconWrp = styled.div`
   width: 20px;
   height: 20px;
@@ -80,6 +89,7 @@ export const IconWrp = styled.div`
 export const RegisterButtonStyled = styled.button`
   display: inline-flex;
   padding: 16px 18px;
+  margin-top: 16px;
   justify-content: center;
   align-items: center;
   border: none;
@@ -97,16 +107,25 @@ export const RegisterButtonStyled = styled.button`
   &:hover {
     background-color: var(--green-hover);
   }
+
+  @media ${devices.tablet} {
+    font-size: 18px;
+    line-height: calc(28 / 18);
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
-color: rgba(18, 20, 23, 0.50);
-font-family: "Fixel Display";
-font-size: 16px;
-font-style: normal;
-font-weight: 700;
-line-height: calc(24 / 16);
-text-decoration: underline;
-margin: 0 auto;
+  color: rgba(18, 20, 23, 0.5);
+  font-family: "Fixel Display";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: calc(24 / 16);
+  text-decoration: underline;
+  margin: 0 auto;
 
-`
+  @media ${devices.tablet} {
+    font-size: 18px;
+    line-height: calc(28 / 18);
+  }
+`;

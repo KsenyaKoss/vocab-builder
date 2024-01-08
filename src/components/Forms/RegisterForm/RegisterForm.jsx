@@ -30,18 +30,22 @@ const RegisterForm = () => {
   });
   return (
     <RegisterStyled>
-      <TitleStyled>Register</TitleStyled>
-      <PStyled>
-        To start using our services, please fill out the registration form
-        below. All fields are mandatory:
-      </PStyled>
+      <div>
+        <TitleStyled>Register</TitleStyled>
+        <PStyled>
+          To start using our services, please fill out the registration form
+          below. All fields are mandatory:
+        </PStyled>
+      </div>
       <FormStyled onSubmit={formik.onSubmit}>
-        <InputStyled type="text" placeholder="Name" />
-        <InputStyled type="email" placeholder="Email" />
+        <InputStyled type="text" placeholder="Name" name="name" />
+        <InputStyled type="email" placeholder="Email"  name="email"/>
         <InputPasswordWrp>
-          <InputStyled  
-          type={passwordVisible? "text" : "password"} 
-          placeholder="Password"/>
+          <InputStyled
+            type={passwordVisible ? "text" : "password"}
+            placeholder="Password"
+            name="password"
+          />
           <IconWrp onClick={togglePassword}>
             {passwordVisible ? <Icon id={"eye-off"} /> : <Icon id={"eye"} />}
           </IconWrp>

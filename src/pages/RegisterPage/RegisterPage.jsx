@@ -1,15 +1,14 @@
-import React from 'react'
-import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm'
+import React from "react";
+import RegisterForm from "../../components/Forms/RegisterForm/RegisterForm";
 
-import { PageStyled } from './RegisterPage.styled'
+import { PageStyled } from "./RegisterPage.styled";
 
 const RegisterPage = () => {
   return (
     <PageStyled>
-      <RegisterForm/>
-     
+      <RegisterForm />
     </PageStyled>
-  )
-}
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;
