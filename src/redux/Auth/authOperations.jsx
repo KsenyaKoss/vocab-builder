@@ -17,8 +17,7 @@ export const registerThunk = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const res = await axios.post("/users/signup", user);
-      console.log(user);
-      setToken(res.data.data.accessToken);
+      setToken(res.data.token);
       return res.data;
     } catch (error) {
       if (error.message === "Request failed with status code 409") {
@@ -37,7 +36,7 @@ export const loginThunk = createAsyncThunk(
     async (user, {rejectWithValue}) => {
         try {
             const res = await axios.post('/users/signin', user);
-            setToken(res.data.data.accessToken);
+            setToken(res.data.token);
             return res.data;
         } catch (error) {
            Notiflix.Notify.failure(`Email doesn't exist or password is wrong`);
@@ -62,7 +61,7 @@ export const logoutThunk = createAsyncThunk(
 export const getCurrentUserThunk = createAsyncThunk(
     'auth/current',
     async (_, thunkAPI) => {
-        const savedToken = thunkAPI.getState().auth.accessToken;
+        const savedToken = thunkAPI.getState().auth.token;
         try {
             setToken(savedToken);
             const res = axios.get('users/current');

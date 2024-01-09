@@ -18,7 +18,6 @@ const rejected = (state) => {
 const initialState = {
   user: null,
   accessToken: "",
-  refreshToken: "",
   isLoggedIn: false,
   isLoading: false,
   error: null,
@@ -37,17 +36,16 @@ const authSlice = createSlice({
       .addCase(logoutThunk.rejected, rejected)
       .addCase(getCurrentUserThunk.pending, pending)
       .addCase(getCurrentUserThunk.rejected, rejected)
-      .addCase(registerThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
-        state.user = payload;
-        state.accessToken = payload.accessToken;
+      .addCase(registerThunk.fulfilled, (state, { payload: {email, name, token} }) => {
+        state.user = {name, email};
+        state.accessToken = token;
         state.isLoading = false;
         state.isLoggedIn = true;
         state.error = null;
       })
-      .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        state.user = payload;
-        state.accessToken = payload.accessToken;
+      .addCase(loginThunk.fulfilled, (state, { payload: {name, email, token} }) => {
+        state.user = {name, email};
+        state.accessToken = token;
         state.isLoading = false;
         state.isLoggedIn = true;
         state.error = null;

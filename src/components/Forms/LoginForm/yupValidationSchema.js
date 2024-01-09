@@ -1,14 +1,14 @@
 import * as yup from "yup";
+import { regExMail, regExPass } from "../../../constants/regEx";
 
-const regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 
 export const yupSchemaLogin = yup.object().shape({
-  email: yup.string().email("Please enter a valid email").required("Required"),
+  email: yup.string().matches(regExMail, {message: "Please enter a valid email"}).required("Required"),
   password: yup
     .string()
     .min(5)
     .matches(
-      regEx,
+      regExPass,
       {message: "Please create a stronger password, using latin letters & numbers"}
     )
     .required("Required"),
