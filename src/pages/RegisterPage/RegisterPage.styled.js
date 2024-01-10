@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { devices } from "../../constants/breakpoints";
 
 export const PageStyled = styled.div`
+  padding-top: 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -11,13 +12,14 @@ export const PageStyled = styled.div`
   @media ${devices.tablet} {
     flex-direction: column-reverse;
     gap: 98px;
+    padding: 140px 38px 0 38px;
   }
 
   @media ${devices.desktop} {
     flex-direction: row-reverse;
     gap: 80px;
   }
-`;
+`;                              
 
 export const HeroWrp = styled.div`
   display: flex;
