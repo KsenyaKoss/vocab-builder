@@ -15,6 +15,7 @@ const LoginPage = () => {
 
   return (
     <PageStyled>
+     
       <HeroWrp>
         <ImgWrp>
           <ImgStyled

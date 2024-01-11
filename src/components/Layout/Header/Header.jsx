@@ -3,13 +3,13 @@ import UserNav from "../UserNav/UserNav";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../../redux/Auth/authSelectors";
 import UserBar from "../UserBar/UserBar";
-import { HeaderWrp, ImgWrp, LogoTitle, LogoWrp } from "./Header.styled";
+import { BurgerWrp, HeaderWrp, ImgWrp, LogoTitle, LogoWrp } from "./Header.styled";
 import useMediaRules from "../../../hooks/useMediaRules";
+import Icon from "../../Icons/Icon";
 
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
   const {isMobile, isDesktop}  = useMediaRules();
 
   return (
@@ -25,6 +25,9 @@ const Header = () => {
       </LogoWrp>
       {isDesktop  && <UserNav />}
       {isLoggedIn && <UserBar />}
+      <BurgerWrp>
+          <Icon id="burger" />
+        </BurgerWrp>
     </HeaderWrp>
   );
 };

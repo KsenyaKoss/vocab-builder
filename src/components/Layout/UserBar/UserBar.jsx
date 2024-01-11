@@ -2,7 +2,6 @@ import React from "react";
 import Icon from "../../Icons/Icon";
 import {
   AvatarWrp,
-  BurgerWrp,
   NameStyled,
   UserBarWrp,
   UserWrp,
@@ -15,10 +14,7 @@ const UserBar = ({ name, avatar }) => {
         <NameStyled>{name || "Iryna"}</NameStyled>
         <AvatarWrp>
           {avatar ? <img src={avatar} alt="avatar" /> : <Icon id="user" />}
-        </AvatarWrp>
-        <BurgerWrp>
-          <Icon id="burger" />
-        </BurgerWrp>
+        </AvatarWrp>    
       </UserWrp>
     </UserBarWrp>
   );

@@ -36,3 +36,16 @@ font-style: normal;
 font-weight: 600;
 line-height: calc(24/18); 
 `
+
+export const BurgerWrp = styled.div`
+  @media ${devices.desktop} {
+    display: none;
+  }
+  & svg {
+    width: 32px;
+
+    @media ${devices.tablet} {
+      width: 40px;
+    }
+  }
+`;

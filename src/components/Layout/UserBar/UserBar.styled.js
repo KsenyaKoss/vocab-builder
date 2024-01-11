@@ -21,7 +21,7 @@ export const UserWrp = styled.div`
 `;
 
 export const NameStyled = styled.p`
-  color: var(--main-black);
+  color: inherit;
   font-family: "Fixel Display";
   font-size: 16px;
   font-style: normal;
@@ -55,18 +55,6 @@ export const AvatarWrp = styled.div`
     @media ${devices.tablet} {
       width: 24px;
       height: 24px;
-    }
-  }
-`;
-export const BurgerWrp = styled.div`
-  @media ${devices.desktop} {
-    display: none;
-  }
-  & svg {
-    width: 32px;
-
-    @media ${devices.tablet} {
-      width: 40px;
     }
   }
 `;

@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom'
 
 const UserNav = () => {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <div>

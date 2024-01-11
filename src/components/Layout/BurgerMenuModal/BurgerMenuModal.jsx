@@ -1,26 +1,38 @@
-import React from 'react'
-import UserBar from '../UserBar/UserBar'
-import Icon from '../../Icons/Icon'
-import UserNav from '../UserNav/UserNav'
-import useMediaRules from '../../../hooks/useMediaRules'
+import React from "react";
+import UserBar from "../UserBar/UserBar";
+import Icon from "../../Icons/Icon";
+import UserNav from "../UserNav/UserNav";
+import useMediaRules from "../../../hooks/useMediaRules";
+import {
+  ImgStyled,
+  ImgWrp,
+  MenuBody,
+  UserBarIconWrp,
+} from "./BurgerMenuModal.styled";
 
 const BurgerMenuModal = () => {
-    const { isRetina } = useMediaRules();
+  const { isRetina } = useMediaRules();
   return (
     <div>
-      <UserBar/>
-      <Icon id="close"/>
-      <UserNav/>
-      <div>
-        <img src={ isRetina
-                ? require("../../assets/images/illustration-desktop@2x.png")
-                : require("../../assets/images/illustration-desktop.png")
+      <MenuBody>
+        <UserBarIconWrp>
+          <UserBar />
+          <Icon id="close" />
+        </UserBarIconWrp>
+        <UserNav />
+        <ImgWrp>
+          <ImgStyled
+            src={
+              isRetina
+                ? require("../../../assets/images/illustration-desktop@2x.png")
+                : require("../../../assets/images/illustration-desktop.png")
             }
-            alt="VocabBuilder" />
-      </div>
-
+            alt="VocabBuilder"
+          />
+        </ImgWrp>
+      </MenuBody>
     </div>
-  )
-}
+  );
+};
 
-export default BurgerMenuModal
+export default BurgerMenuModal;
