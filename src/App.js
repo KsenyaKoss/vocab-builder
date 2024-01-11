@@ -5,6 +5,7 @@ import DictionaryPage from "./pages/DictionaryPage/DictionaryPage";
 import RecommendPage from "./pages/RecommendPage/RecommendPage";
 import TrainingPage from "./pages/TrainingPage/TrainingPage";
 import MainLayout from "./components/Layout/MainLayout/MainLayout";
+import PrivateRoute from "./HOC/PrivateRoute";
 
 const App = () => {
   return (
@@ -12,9 +13,31 @@ const App = () => {
       <Route path="/" element={<MainLayout />}>
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="dictionary" element={<DictionaryPage />} />
-        <Route path="recommend" element={<RecommendPage />} />
-        <Route path="training" element={<TrainingPage />} />
+
+        <Route
+          path="dictionary"
+          element={
+            <PrivateRoute>
+              <DictionaryPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="recommend"
+          element={
+            <PrivateRoute>
+              <RecommendPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="training"
+          element={
+            <PrivateRoute>
+              <TrainingPage />
+            </PrivateRoute>
+          }
+        />
       </Route>
     </Routes>
   );

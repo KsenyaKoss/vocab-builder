@@ -18,10 +18,12 @@ import {
 import { yupSchemaLogin } from "./yupValidationSchema";
 import { useDispatch } from "react-redux";
 import { loginThunk } from "../../../redux/Auth/authOperations";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const togglePassword = () => setPasswordVisible(!passwordVisible);
 
@@ -43,6 +45,7 @@ const LoginForm = () => {
       console.log(values);
       actions.resetForm();
       dispatch(loginThunk(values));
+      navigate("/dictionary");
     },
   });
   return (

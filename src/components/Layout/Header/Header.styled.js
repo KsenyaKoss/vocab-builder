@@ -37,6 +37,18 @@ font-weight: 600;
 line-height: calc(24/18); 
 `
 
+export const UserBarBurgerIconWrp = styled.div`
+display: flex;
+gap: 8px;
+align-items: center;
+justify-content: center;
+
+@media ${devices.tablet} {
+  gap: 28px;
+}
+
+`
+
 export const BurgerWrp = styled.div`
   @media ${devices.desktop} {
     display: none;

@@ -18,11 +18,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerThunk } from "../../../redux/Auth/authOperations";
 import { yupSchemaRegister } from "./yupValidationSchema";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const dispatch = useDispatch();
   const togglePassword = () => setPasswordVisible(!passwordVisible);
+  const navigate = useNavigate();
 
   const {
     values,
@@ -43,6 +45,7 @@ const RegisterForm = () => {
       console.log(values);
       actions.resetForm();
       dispatch(registerThunk(values));
+      navigate("/dictionary");
     },
   });
   return (
