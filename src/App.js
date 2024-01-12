@@ -17,9 +17,9 @@ const App = () => {
         <Route
           path="dictionary"
           element={
-            <PrivateRoute>
+            
               <DictionaryPage />
-            </PrivateRoute>
+           
           }
         />
         <Route

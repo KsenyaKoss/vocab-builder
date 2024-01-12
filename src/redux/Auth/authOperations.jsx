@@ -4,7 +4,7 @@ import Notiflix from "notiflix";
 
 axios.defaults.baseURL = "https://vocab-builder-backend.p.goit.global/api";
 
-const setToken = (token) => {
+export const setToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 

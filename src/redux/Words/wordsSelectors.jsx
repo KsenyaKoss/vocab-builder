@@ -1,0 +1,1 @@
+export const getCategoriesList = state => state.words.categories;
