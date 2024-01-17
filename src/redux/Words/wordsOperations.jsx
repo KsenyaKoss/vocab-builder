@@ -1,24 +1,32 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 // import Notiflix from "notiflix";
-import { selectAccessToken } from "../Auth/authSelectors";
-import { setToken } from "../Auth/authOperations";
 
-axios.defaults.baseURL = "https://vocab-builder-backend.p.goit.global/api";
+
+// axios.defaults.baseURL = "https://vocab-builder-backend.p.goit.global/api";
 
 export const getCategoriesListThunk = createAsyncThunk(
   "words/categories",
-  async (_, { rejectWithValue, getState }) => {
-    console.log(getState);
-    const token = selectAccessToken(getState());
-    setToken(token);
-    console.log(token);
+  async (_, { rejectWithValue}) => {
     try {
-      
       const res = await axios.get("/words/categories");
+      console.log(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
+
+export const getStatisticsThunk = createAsyncThunk(
+  "words/statistics",
+  async (_, {rejectWithValue}) => {
+    try {
+      const res = await axios.get("/words/statistics");
+      console.log(res);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)

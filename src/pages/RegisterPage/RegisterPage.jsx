@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RegisterForm from "../../components/Forms/RegisterForm/RegisterForm";
 
 import {
@@ -10,9 +10,18 @@ import {
   PageStyled,
 } from "./RegisterPage.styled";
 import useMediaRules from "../../hooks/useMediaRules";
+import { useDispatch } from "react-redux";
+import { getCurrentUserThunk } from "../../redux/Auth/authOperations";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const { isMobile, isDesktop, isRetina } = useMediaRules();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(()=>{
+   dispatch(getCurrentUserThunk()).unwrap().then(()=> navigate('/dictionary')) ;
+  }, [dispatch]);
+
   return (
     <PageStyled>
       <HeroWrp>

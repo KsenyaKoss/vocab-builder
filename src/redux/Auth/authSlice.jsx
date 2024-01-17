@@ -51,8 +51,9 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logoutThunk.fulfilled, () => ({ ...initialState }))
-      .addCase(getCurrentUserThunk.fulfilled, (state, { payload }) => {
-        state.user = payload;
+      .addCase(getCurrentUserThunk.fulfilled, (state, { payload: {name, email, token} }) => {
+        state.user =  {name, email};
+        state.accessToken = token;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;

@@ -6,8 +6,12 @@ import {
   UserBarWrp,
   UserWrp,
 } from "./UserBar.styled";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../redux/Auth/authSelectors";
 
-const UserBar = ({ name, avatar }) => {
+const UserBar = () => {
+
+  const {name, avatar} = useSelector(selectUser);
   return (
     <UserBarWrp>
       <UserWrp>

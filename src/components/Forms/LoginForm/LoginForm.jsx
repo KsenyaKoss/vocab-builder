@@ -43,8 +43,9 @@ const LoginForm = () => {
     validationSchema: yupSchemaLogin,
     onSubmit: (values, actions) => {
       actions.resetForm();
-      dispatch(loginThunk(values));
-      navigate("/dictionary");
+      dispatch(loginThunk(values))
+        .unwrap()
+        .then(() => navigate("/dictionary"));
     },
   });
   return (

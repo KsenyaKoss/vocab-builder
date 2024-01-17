@@ -44,8 +44,9 @@ const RegisterForm = () => {
     onSubmit: (values, actions) => {
       console.log(values);
       actions.resetForm();
-      dispatch(registerThunk(values));
-      navigate("/dictionary");
+      dispatch(registerThunk(values))
+        .unwrap()
+        .then(() => navigate("/dictionary"));
     },
   });
   return (
@@ -58,66 +59,66 @@ const RegisterForm = () => {
         </PStyled>
       </div>
       <FormStyled onSubmit={handleSubmit}>
-      <InputWrp>
-      <InputStyled
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={values.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={
-            touched.name && !errors.name
-              ? "valid"
-              : errors.name && touched.name
-              ? "invalid"
-              : ""
-          }
-        />
-        {touched.name && errors.name ? (
-          <InputWarningWrp>
-            <Icon id={"warning"} />
-            <StyledError>{errors.name}</StyledError>
-          </InputWarningWrp>
-        ) : touched.name && !errors.name ? (
-          <InputWarningWrp>
-            <Icon id={"success"} />
-            <StyledSuccess>Success name</StyledSuccess>
-          </InputWarningWrp>
-        ) : (
-          <></>
-        )}
-      </InputWrp>
-       <InputWrp>
-       <InputStyled
-          type="email"
-          placeholder="Email"
-          name="email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={
-            touched.email && !errors.email
-              ? "valid"
-              : errors.email && touched.email
-              ? "invalid"
-              : ""
-          }
-        />
-        {touched.email && errors.email ? (
-          <InputWarningWrp>
-            <Icon id={"warning"} />
-            <StyledError>{errors.email}</StyledError>
-          </InputWarningWrp>
-        ) : touched.email && !errors.email ? (
-          <InputWarningWrp>
-            <Icon id={"success"} />
-            <StyledSuccess>Success email</StyledSuccess>
-          </InputWarningWrp>
-        ) : (
-          <></>
-        )}
-       </InputWrp>
+        <InputWrp>
+          <InputStyled
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={
+              touched.name && !errors.name
+                ? "valid"
+                : errors.name && touched.name
+                ? "invalid"
+                : ""
+            }
+          />
+          {touched.name && errors.name ? (
+            <InputWarningWrp>
+              <Icon id={"warning"} />
+              <StyledError>{errors.name}</StyledError>
+            </InputWarningWrp>
+          ) : touched.name && !errors.name ? (
+            <InputWarningWrp>
+              <Icon id={"success"} />
+              <StyledSuccess>Success name</StyledSuccess>
+            </InputWarningWrp>
+          ) : (
+            <></>
+          )}
+        </InputWrp>
+        <InputWrp>
+          <InputStyled
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={
+              touched.email && !errors.email
+                ? "valid"
+                : errors.email && touched.email
+                ? "invalid"
+                : ""
+            }
+          />
+          {touched.email && errors.email ? (
+            <InputWarningWrp>
+              <Icon id={"warning"} />
+              <StyledError>{errors.email}</StyledError>
+            </InputWarningWrp>
+          ) : touched.email && !errors.email ? (
+            <InputWarningWrp>
+              <Icon id={"success"} />
+              <StyledSuccess>Success email</StyledSuccess>
+            </InputWarningWrp>
+          ) : (
+            <></>
+          )}
+        </InputWrp>
         <InputWrp>
           <InputStyled
             type={passwordVisible ? "text" : "password"}
@@ -138,18 +139,18 @@ const RegisterForm = () => {
             {passwordVisible ? <Icon id={"eye-off"} /> : <Icon id={"eye"} />}
           </IconWrp>
           {touched.password && errors.password ? (
-          <InputWarningWrp>
-            <Icon id={"warning"} />
-            <StyledError>{errors.password}</StyledError>
-          </InputWarningWrp>
-        ) : touched.password && !errors.password ? (
-          <InputWarningWrp>
-            <Icon id={"success"} />
-            <StyledSuccess>Success password</StyledSuccess>
-          </InputWarningWrp>
-        ) : (
-          <></>
-        )}
+            <InputWarningWrp>
+              <Icon id={"warning"} />
+              <StyledError>{errors.password}</StyledError>
+            </InputWarningWrp>
+          ) : touched.password && !errors.password ? (
+            <InputWarningWrp>
+              <Icon id={"success"} />
+              <StyledSuccess>Success password</StyledSuccess>
+            </InputWarningWrp>
+          ) : (
+            <></>
+          )}
         </InputWrp>
         <RegisterButtonStyled disabled={isSubmitting} type="submit">
           Register
