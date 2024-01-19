@@ -10,9 +10,10 @@ const pending = (state) => {
   state.isLoading = true;
 };
 
-const rejected = (state) => {
+const rejected = (state, {payload}) => {
   state.isLoading = false;
   state.isLoggedIn = false;
+  state.error = payload
 };
 
 const initialState = {

@@ -29,4 +29,15 @@ export const getStatisticsThunk = createAsyncThunk(
       return rejectWithValue(error.message);
     }
   }
+);
+
+export const getWordsAll = createAsyncThunk(
+  "words/all",
+  async (query, {rejectWithValue}) => {
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
 )

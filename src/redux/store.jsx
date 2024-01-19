@@ -22,16 +22,16 @@ import { wordsReducer } from "./Words/wordsSlice";
     whitelist: ['accessToken', 'refreshToken'],
   };
 
-  // const persistConfigForWords = {
-  //   key: 'words',
-  //   version: 1,
-  //   storage,
-  // }
+  const persistConfigForWords = {
+    key: 'words',
+    version: 1,
+    storage,
+  }
 
 export const store = configureStore({
     reducer: {
         auth: persistReducer(persistConfig, authReducer),
-        words:  wordsReducer,
+        words:  persistReducer(persistConfigForWords, wordsReducer),
     },
     middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

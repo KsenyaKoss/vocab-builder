@@ -1,18 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCategoriesListThunk, getStatisticsThunk } from "./wordsOperations";
 
-const pending = (state) => (state.isLoading = true);
+const pending = (state) => {
+  state.isLoading = true};
 
-const rejected = (state) => {
+const rejected = (state, {payload}) => {
   state.isLoading = false;
-  
+  state.error = payload;
 };
 
 const initialState = {
   categories: [],
   totalCount: "",
-//   wordsAll: [],
-//   wordsOwn: [],
   isLoading: false,
   error: null,
 };
@@ -25,14 +24,14 @@ const wordsSlice = createSlice({
       .addCase(getCategoriesListThunk.pending, pending)
       .addCase(getCategoriesListThunk.rejected, rejected)
       .addCase(getCategoriesListThunk.fulfilled, (state, {payload}) => {
-        console.log("Fulfilled", payload);
+        state.categories = payload;
         state.isLoading = false;
        
       })
     .addCase(getStatisticsThunk.pending, pending)
     .addCase(getStatisticsThunk.rejected, rejected)
-    .addCase(getStatisticsThunk.fulfilled, (state, {payload})=> {
-      state.totalCount = payload;
+    .addCase(getStatisticsThunk.fulfilled, (state, {payload: {totalCount}})=> {
+      state.totalCount = totalCount;
       state.isLoading = false;
       state.error = null;
     })

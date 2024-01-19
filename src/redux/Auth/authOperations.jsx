@@ -61,13 +61,10 @@ export const logoutThunk = createAsyncThunk(
 export const getCurrentUserThunk = createAsyncThunk(
     'auth/current',
     async (_, thunkAPI) => {
-      console.log(thunkAPI.getState());
         const savedToken = thunkAPI.getState().auth.accessToken;
-        console.log(savedToken);
         try {
             setToken(savedToken);
             const res = await  axios.get('users/current');
-            console.log(res.data);
             return res.data;
         } catch (error) {
             thunkAPI.rejectWithValue(error.message);

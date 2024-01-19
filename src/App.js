@@ -1,17 +1,41 @@
 import { Route, Routes } from "react-router-dom";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import DictionaryPage from "./pages/DictionaryPage/DictionaryPage";
 import RecommendPage from "./pages/RecommendPage/RecommendPage";
 import TrainingPage from "./pages/TrainingPage/TrainingPage";
-import MainLayout from "./components/Layout/MainLayout/MainLayout";
 import PrivateRoute from "./HOC/PrivateRoute";
 import PublicRoute from "./HOC/PublicRoute";
+import { useDispatch, useSelector } from "react-redux";
+import { Suspense, lazy, useEffect } from "react";
+import { getCurrentUserThunk } from "./redux/Auth/authOperations";
+import Loader from "./components/Layout/Loader/Loader";
+import { selectIsLoading } from "./redux/Auth/authSelectors";
+
+const MainLayout = lazy(() =>
+  import("./components/Layout/MainLayout/MainLayout")
+);
+const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+
+  useEffect(() => {
+    dispatch(getCurrentUserThunk());
+  }, [dispatch]);
+
+  return isLoading ? (
+    <Loader />
+  ) : (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<Loader />}>
+            <MainLayout />
+          </Suspense>
+        }
+      >
         <Route
           path="register"
           element={

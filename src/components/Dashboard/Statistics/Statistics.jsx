@@ -1,14 +1,16 @@
 import { useSelector } from "react-redux"
 import { getStatistics } from "../../../redux/Words/wordsSelectors"
+import { StatisticsNumber, StatisticsTitle, StatisticsWrp } from "./Statistics.styled";
 
 const Statistics = () => {
    const totalCount = useSelector(getStatistics);
+   console.log(totalCount);
 
   return (
-    <div>
-      <p>To study: </p>  
-      <p>{totalCount}</p>
-    </div>
+    <StatisticsWrp>
+      <StatisticsTitle>To study: </StatisticsTitle>  
+      <StatisticsNumber>{totalCount}</StatisticsNumber>
+    </StatisticsWrp>
   )
 }
 
