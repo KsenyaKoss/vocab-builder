@@ -63,11 +63,20 @@ export const getCurrentUserThunk = createAsyncThunk(
     async (_, thunkAPI) => {
         const savedToken = thunkAPI.getState().auth.accessToken;
         try {
+          console.log(savedToken);
             setToken(savedToken);
             const res = await  axios.get('users/current');
+            console.log(res);
             return res.data;
         } catch (error) {
+          if (error.response && error.response.status === 401) {
+            Notiflix.Notify.error('Ошибка 401: Токен истек или неверен');
+            // thunkAPI.dispatch(logoutThunk());
+            removeToken();
+          } else {
+            // Обработка других ошибок
             thunkAPI.rejectWithValue(error.message);
+          }
         }
     }
 );

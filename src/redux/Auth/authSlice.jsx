@@ -51,10 +51,16 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.error = null;
       })
-      .addCase(logoutThunk.fulfilled, () => ({ ...initialState }))
-      .addCase(getCurrentUserThunk.fulfilled, (state, { payload: {name, email, token} }) => {
-        state.user =  {name, email};
-        state.accessToken = token;
+      .addCase(logoutThunk.fulfilled, (state) => { 
+        state.user= null;
+        state.accessToken= "";
+        state.isLoggedIn= false;
+        state.isLoading= false;
+        state.error= null;
+      })
+      .addCase(getCurrentUserThunk.fulfilled, (state, {payload}) => {
+        console.log(payload);
+        state.user = payload;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;

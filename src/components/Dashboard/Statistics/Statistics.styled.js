@@ -4,8 +4,6 @@ import { devices } from "../../../constants/breakpoints";
 export const StatisticsWrp = styled.div`
 display: flex;
 gap: 8px;
-margin-top: 40px;
-margin-bottom: 8px;
 align-items: center;
 /* justify-content: center; */
 `

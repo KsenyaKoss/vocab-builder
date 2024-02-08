@@ -10,14 +10,14 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../../redux/Auth/authSelectors";
 
 const UserBar = () => {
+  const user = useSelector(selectUser);
 
-  const {name, avatar} = useSelector(selectUser);
   return (
     <UserBarWrp>
       <UserWrp>
-        <NameStyled>{name || "Iryna"}</NameStyled>
+        <NameStyled>{user?.name || "Iryna"}</NameStyled>
         <AvatarWrp>
-          {avatar ? <img src={avatar} alt="avatar" /> : <Icon id="user" />}
+          {user?.avatar ? <img src={user?.avatar} alt="avatar" /> : <Icon id="user" />}
         </AvatarWrp>    
       </UserWrp>
     </UserBarWrp>

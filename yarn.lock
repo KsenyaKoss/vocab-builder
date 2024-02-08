@@ -1873,6 +1873,18 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
+"@tanstack/react-table@^8.11.7":
+  version "8.11.7"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.11.7.tgz#a2934c1ee32025d58c9dc4d13cbc15fe0a3e045e"
+  integrity sha512-ZbzfMkLjxUTzNPBXJYH38pv2VpC9WUA+Qe5USSHEBz0dysDTv4z/ARI3csOed/5gmlmrPzVUN3UXGuUMbod3Jg==
+  dependencies:
+    "@tanstack/table-core" "8.11.7"
+
+"@tanstack/table-core@8.11.7":
+  version "8.11.7"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.11.7.tgz#266af5af8576e8860df8abfe4e32e9c4ffbc76b0"
+  integrity sha512-N3ksnkbPbsF3PjubuZCB/etTqvctpXWRHIXTmYfJFnhynQKjeZu8BCuHvdlLPpumKbA+bjY4Ay9AELYLOXPWBg==
+
 "@testing-library/dom@^8.5.0":
   version "8.20.1"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.20.1.tgz#2e52a32e46fc88369eef7eef634ac2a192decd9f"
@@ -6751,6 +6763,11 @@ nanoid@^3.3.6:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.7.tgz#d0c301a691bc8d54efa0a2226ccf3fe2fd656bd8"
   integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
+
+nanoid@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.0.5.tgz#5112efb5c0caf4fc80680d66d303c65233a79fdd"
+  integrity sha512-/Veqm+QKsyMY3kqi4faWplnY1u+VuKO3dD2binyPIybP31DRO29bPF+1mszgLnrR2KqSLceFLBNw0zmvDzN1QQ==
 
 natural-compare-lite@^1.4.0:
   version "1.4.0"

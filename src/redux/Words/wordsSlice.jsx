@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCategoriesListThunk, getStatisticsThunk } from "./wordsOperations";
+import { getCategoriesListThunk, getStatisticsThunk, getWordsAll } from "./wordsOperations";
 
 const pending = (state) => {
   state.isLoading = true};
@@ -12,6 +12,7 @@ const rejected = (state, {payload}) => {
 const initialState = {
   categories: [],
   totalCount: "",
+  allWords: [],
   isLoading: false,
   error: null,
 };
@@ -35,7 +36,14 @@ const wordsSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     })
-      ,
+    .addCase(getWordsAll.pending, pending)
+    .addCase(getWordsAll.rejected, rejected)
+    .addCase(getWordsAll.fulfilled, (state, {payload})=>{
+      console.log(payload);
+      state.isLoading = false;
+      state.error = null;
+      state.allWords = payload.results;
+    })
 });
 
 export const wordsReducer = wordsSlice.reducer;

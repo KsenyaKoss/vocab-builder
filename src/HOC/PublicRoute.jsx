@@ -6,6 +6,8 @@ const PublicRoute = ({children}) => {
     const location = useLocation();
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const pageFrom = location.state?.from.pathname
+    console.log(location);
+    console.log(pageFrom);
 
   return (
     isLoggedIn? <Navigate to={pageFrom}/> : children

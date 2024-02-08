@@ -14,7 +14,7 @@ import { selectIsLoading } from "./redux/Auth/authSelectors";
 const MainLayout = lazy(() =>
   import("./components/Layout/MainLayout/MainLayout")
 );
-const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
+const  RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,14 +24,13 @@ const App = () => {
     dispatch(getCurrentUserThunk());
   }, [dispatch]);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
+    isLoading ? <Loader/> :
     <Routes>
       <Route
         path="/"
         element={
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<Loader/>}>
             <MainLayout />
           </Suspense>
         }
