@@ -9,7 +9,6 @@ import { getAllWords } from "../../redux/Words/wordsSelectors";
 import { nanoid } from "nanoid";
 import {
   CellStyled,
-  HeaderCellStyled,
   HeaderTableStyled,
   RowsWrpStyled,
   TableWrp,
@@ -70,13 +69,13 @@ const WordsTable = () => {
         {table.getHeaderGroups().map((headerGroup) => (
           <HeaderTableStyled key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <HeaderCellStyled key={header.id} width={header.getSize()}>
+              <CellStyled key={header.id} width={header.getSize()}>
                 <>
                   {header.column.columnDef.header}
                   {(!isMobile && header.column.columnDef.header === "Word") ? <Ukingdom /> : ""}
                   {(!isMobile && header.column.columnDef.header === "Translation") ? <Ukraine /> : ""}
                 </>
-              </HeaderCellStyled>
+              </CellStyled>
             ))}
           </HeaderTableStyled>
         ))}

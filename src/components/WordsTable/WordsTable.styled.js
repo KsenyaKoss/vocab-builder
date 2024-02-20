@@ -19,7 +19,7 @@ export const HeaderTableStyled = styled.div`
   display: flex;
 `;
 
-export const HeaderCellStyled = styled.div`
+export const CellStyled = styled.div`
   padding: 16px 14px;
   border: 1px solid #dbdbdb;
   flex-grow: 1;
@@ -43,6 +43,7 @@ export const HeaderCellStyled = styled.div`
 
   @media ${devices.desktop} {
     padding: 22px;
+    max-width: 252px;
   }
 `;
 
@@ -52,25 +53,25 @@ display: flex;
 
 `
 
-export const CellStyled = styled.div`
-padding: 16px 10px 16px 14px;
-border: 1px solid #dbdbdb;
+// export const CellStyled = styled.div`
+// padding: 16px 10px 16px 14px;
+// border: 1px solid #dbdbdb;
 
-&:first-child{
-  border-left: none;
-}
+// &:first-child{
+//   border-left: none;
+// }
 
-&:last-child{
-  border-right: none;
-}
-
-
-@media ${devices.desktop} {
-    padding: 22px;
-    max-width: 280px;
-    flex-grow: 1;
-  }
+// &:last-child{
+//   border-right: none;
+// }
 
 
-`
+// @media ${devices.desktop} {
+//     padding: 22px;
+//     max-width: 280px;
+//     flex-grow: 1;
+//   }
+
+
+// `
 
