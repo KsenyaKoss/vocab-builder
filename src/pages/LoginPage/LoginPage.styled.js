@@ -16,6 +16,7 @@ export const PageStyled = styled.div`
   @media ${devices.desktop} {
     flex-direction: row-reverse;
     gap: 80px;
+    padding-top: 114px;
   }
 `;
 export const HeroWrp = styled.div`

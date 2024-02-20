@@ -33,7 +33,7 @@ const Header = () => {
         </ImgWrp>
         <LogoTitle>VocabBuilder</LogoTitle>
       </LogoWrp>
-      {isDesktop && <UserNav />}
+      {isDesktop && isLoggedIn && <UserNav />}
       <UserBarBurgerIconWrp>
         {isLoggedIn && <UserBar />}
         <BurgerWrp>

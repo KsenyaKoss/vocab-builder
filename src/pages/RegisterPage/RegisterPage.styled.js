@@ -18,6 +18,7 @@ export const PageStyled = styled.div`
   @media ${devices.desktop} {
     flex-direction: row-reverse;
     gap: 80px;
+    padding: 64px 38px 0 38px;
   }
 `;                              
 
