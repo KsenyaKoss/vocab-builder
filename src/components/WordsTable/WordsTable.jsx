@@ -3,10 +3,9 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { getAllWords } from "../../redux/Words/wordsSelectors";
-import { nanoid } from "nanoid";
 import {
   CellStyled,
   HeaderTableStyled,
@@ -64,8 +63,8 @@ const WordsTable = () => {
   });
 
   return (
-    <TableWrp>
-      <div className="table" width={table.getTotalSize()}>
+    <table>
+      <TableWrp className="table" width={table.getTotalSize()}>
         {table.getHeaderGroups().map((headerGroup) => (
           <HeaderTableStyled key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
@@ -80,7 +79,6 @@ const WordsTable = () => {
           </HeaderTableStyled>
         ))}
         {table.getCoreRowModel().rows.map((row) => {
-          console.log(row);
           return (
             <RowsWrpStyled key={row.id}>
               {row.getVisibleCells().map((cell) => {
@@ -94,8 +92,8 @@ const WordsTable = () => {
             </RowsWrpStyled>
           );
         })}
-      </div>
-    </TableWrp>
+      </TableWrp>
+    </table>
   );
 };
 

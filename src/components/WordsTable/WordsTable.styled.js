@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { devices } from "../../constants/breakpoints";
 
-export const TableWrp = styled.div`
+export const TableWrp = styled.tbody`
    margin-top: 32px;
 
 
@@ -15,23 +15,24 @@ export const TableWrp = styled.div`
   }
 `;
 
-export const HeaderTableStyled = styled.div`
+export const HeaderTableStyled = styled.tr`
   display: flex;
 `;
 
-export const CellStyled = styled.div`
+export const CellStyled = styled.td`
   padding: 16px 14px;
   border: 1px solid #dbdbdb;
   flex-grow: 1;
   color: var(--main-black);
   font-family: "FixelDisplay";
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background-color: var(--secondary-background);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 116px;
 
   &:first-child {
     border-top-left-radius: 8px;
@@ -41,14 +42,19 @@ export const CellStyled = styled.div`
     border-top-right-radius: 8px;
   }
 
+  @media ${devices.tablet} {
+    width: 160px;
+  }
+
   @media ${devices.desktop} {
     padding: 22px;
-    max-width: 252px;
+   width: 252px;
+    font-size: 20px;
   }
 `;
 
 
-export const RowsWrpStyled = styled.div`
+export const RowsWrpStyled = styled.tr`
 display: flex;
 
 `

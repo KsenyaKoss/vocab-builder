@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCategoriesList } from "../../../redux/Words/wordsSelectors";
 import Icon from "../../Icons/Icon";
 import {
@@ -15,17 +15,22 @@ import {
 } from "./Filters.styled";
 import { useEffect, useState } from "react";
 import { debounce } from "lodash";
+import { getWordsAll } from "../../../redux/Words/wordsOperations";
 
 const Filters = () => {
   const [searchWord, setSearchWord] = useState("");
   const [selectedCategorie, setSelectedCategorie] = useState("");
   const [verbType, setVerbType] = useState("");
+  const dispatch = useDispatch();
+  console.log("searchWord", searchWord);
 
   const categories = useSelector(getCategoriesList);
 
-  const handleSearchFilterInput = debounce(() => {
-
-  }, 300);
+  // const handleSearchFilterInput = debounce(() => {
+  //  dispatch(getWordsAll({
+  //   keyword: searchWord,
+  //  }))
+  // }, 300);
 
   const handleChangeSearchInput = (event) => {
     const sanitizedInput = event.target.value.trim();
@@ -37,14 +42,16 @@ const Filters = () => {
     setSelectedCategorie(chosenCategorie);
   };
 
-  const handeVerbTypeChange = (event) => {
+  const handleVerbTypeChange = (event) => {
     const selectedVerbType = event.target.value;
     setVerbType(selectedVerbType);
   };
 
   useEffect(()=>{
-    handleSearchFilterInput();
-  }, [searchWord, handleChangeSearchInput]);
+    dispatch(getWordsAll({
+      keyword: searchWord,
+     }))
+  }, [searchWord]);
 
   return (
     <FilterWrp>
@@ -78,7 +85,7 @@ const Filters = () => {
             </CustomRadioBtnWrpStyled>
             <RadioInputStyled
               type="radio"
-              onChange={handeVerbTypeChange}
+              onChange={handleVerbTypeChange}
               checked={verbType === "regular"}
               value={"regular"}
             />
@@ -95,7 +102,7 @@ const Filters = () => {
             <RadioInputStyled
               type="radio"
               checked={verbType === "irregular"}
-              onChange={handeVerbTypeChange}
+              onChange={handleVerbTypeChange}
               value={"irregular"}
             />
             Irregular

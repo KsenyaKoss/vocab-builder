@@ -31,22 +31,23 @@ export const getStatisticsThunk = createAsyncThunk(
 export const getWordsAll = createAsyncThunk(
   "words/all",
   async (
-    _,
+    { keyword, category, isIrregular, page, limit },
     { rejectWithValue }
   ) => {
     try {
-      // const params = {
-      //   keyword,
-      //   category,
-      //   isIrregular,
-      //   // page,
-      //   // limit,
-      // };
-
-      // const filteredParams = Object.fromEntries(
-      //   Object.entries(params).filter(([_, value]) => value !== undefined)
-      // );
-      const res = await axios.get("/words/all");
+      const params = {
+        keyword,
+        category,
+        isIrregular,
+        page,
+        limit,
+      };
+      
+      const filteredParams = Object.fromEntries(
+        Object.entries(params).filter(([_, value]) => value !== undefined)
+      );
+      console.log(filteredParams);
+      const res = await axios.get("/words/all", filteredParams);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
