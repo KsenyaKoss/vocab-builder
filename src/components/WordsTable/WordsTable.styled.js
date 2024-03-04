@@ -1,13 +1,20 @@
 import styled from "styled-components";
 import { devices } from "../../constants/breakpoints";
 
-export const TableWrp = styled.tbody`
-   margin-top: 32px;
+export const TableWrp = styled.table`
+  margin-top: 32px;
+  border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
 
+  @media ${devices.tablet} {
+    margin-top: 28px;
+  }
+`;
+
+export const TableStyled = styled.tbody`
 
   @media ${devices.tablet} {
     max-width: 704px;
-    margin-top: 28px;
   }
 
   @media ${devices.desktop} {
@@ -17,6 +24,15 @@ export const TableWrp = styled.tbody`
 
 export const HeaderTableStyled = styled.tr`
   display: flex;
+  /* border: 1px solid #dbdbdb; */
+
+  /* &:first-child {
+    border-top-left-radius: 8px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 8px;
+  } */
 `;
 
 export const CellStyled = styled.td`
@@ -33,13 +49,14 @@ export const CellStyled = styled.td`
   align-items: center;
   justify-content: space-between;
   width: 116px;
+  overflow: hidden;
 
   &:first-child {
-    border-top-left-radius: 8px;
+    border-left: none;
   }
 
   &:last-child {
-    border-top-right-radius: 8px;
+    border-right: none;
   }
 
   @media ${devices.tablet} {
@@ -48,16 +65,14 @@ export const CellStyled = styled.td`
 
   @media ${devices.desktop} {
     padding: 22px;
-   width: 252px;
+    width: 252px;
     font-size: 20px;
   }
 `;
 
-
 export const RowsWrpStyled = styled.tr`
-display: flex;
-
-`
+  display: flex;
+`;
 
 // export const CellStyled = styled.div`
 // padding: 16px 10px 16px 14px;
@@ -71,13 +86,10 @@ display: flex;
 //   border-right: none;
 // }
 
-
 // @media ${devices.desktop} {
 //     padding: 22px;
 //     max-width: 280px;
 //     flex-grow: 1;
 //   }
 
-
 // `
-

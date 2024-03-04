@@ -10,51 +10,64 @@ import {
   CellStyled,
   HeaderTableStyled,
   RowsWrpStyled,
+  TableStyled,
   TableWrp,
 } from "./WordsTable.styled";
 import { ReactComponent as Ukraine } from "../../assets/images/ukraine.svg";
 import { ReactComponent as Ukingdom } from "../../assets/images/united kingdom.svg";
 import useMediaRules from "../../hooks/useMediaRules";
 
-const columns = [
-  {
-    id: "en",
-    accessorKey: "en",
-    header: "Word",
-    cell: (props) => {
-      return <p>{props.getValue()}</p>;
-    },
-  },
-  {
-    id: "ua",
-    accessorKey: "ua",
-    header: "Translation",
-    cell: (props) => <p>{props.getValue()}</p>,
-  },
-  {
-    id: "category",
-    accessorKey: "category",
-    header: "Category",
-    cell: (props) => <p>{props.getValue()}</p>,
-  },
-  {
-    id: "progress",
-    accessorKey: "progress",
-    header: "Progress",
-    cell: (props) => <p>{props.getValue()}</p>,
-  },
-    {
-      id: "...",
-      accessorKey: "",
-      header: "",
-      cell: (props) => <p>{props.getValue()}</p>,
-    },
-];
+ 
+
 
 const WordsTable = () => {
   const { isMobile } = useMediaRules();
   const allWords = useSelector(getAllWords);
   const data = useMemo(() => allWords, [allWords]);
+
+  const columns = useMemo(() => {
+    const baseColumns = [
+      {
+        id: "en",
+        accessorKey: "en",
+        header: "Word",
+        cell: (props) => {
+          return <p>{props.getValue()}</p>;
+        },
+      },
+      {
+        id: "ua",
+        accessorKey: "ua",
+        header: "Translation",
+        cell: (props) => <p>{props.getValue()}</p>,
+      },
+      {
+        id: "progress",
+        accessorKey: "progress",
+        header: "Progress",
+        cell: (props) => <p>{props.getValue()}</p>,
+      },
+      {
+        id: "...",
+        accessorKey: "",
+        header: "",
+        cell: (props) => <p>{props.getValue()}</p>,
+      },
+    ];
+
+    
+    if (!isMobile) {
+      baseColumns.splice(2, 0, {
+        id: "category",
+        accessorKey: "category",
+        header: "Category",
+        cell: (props) => <p>{props.getValue()}</p>,
+      });
+    }
+
+    return baseColumns;
+  }, [isMobile]);
+
 
   const table = useReactTable({
     data,
@@ -63,8 +76,8 @@ const WordsTable = () => {
   });
 
   return (
-    <table>
-      <TableWrp className="table" width={table.getTotalSize()}>
+    <TableWrp>
+      <TableStyled className="table" width={table.getTotalSize()}>
         {table.getHeaderGroups().map((headerGroup) => (
           <HeaderTableStyled key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
@@ -92,8 +105,8 @@ const WordsTable = () => {
             </RowsWrpStyled>
           );
         })}
-      </TableWrp>
-    </table>
+      </TableStyled>
+    </TableWrp>
   );
 };
 

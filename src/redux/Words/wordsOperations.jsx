@@ -35,22 +35,42 @@ export const getWordsAll = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const params = {
-        keyword,
-        category,
-        isIrregular,
-        page,
-        limit,
-      };
-      
-      const filteredParams = Object.fromEntries(
-        Object.entries(params).filter(([_, value]) => value !== undefined)
-      );
-      console.log(filteredParams);
-      const res = await axios.get("/words/all", filteredParams);
+      let url = `/words/all?`
+
+      if(keyword) {
+        url += `keyword=${keyword}&`;
+      }
+
+      if(category){
+        url += `category=${category}&`;
+      }
+
+      if(isIrregular){
+        url += `isIrregular=${isIrregular}&`;
+      }
+
+      if(page && limit){
+        url +=`page=${page}&limit=${limit}`;
+      }
+      console.log(url);
+      const res = await axios.get(url);
+      console.log(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
+
+
+export const addWordThunk = createAsyncThunk(
+  'words/create',
+  async ( newWord, {rejectWithValue}) => {
+    try {
+      const res = await axios.post("words/create", newWord);
+      return res.data
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+)

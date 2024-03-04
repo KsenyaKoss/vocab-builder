@@ -1,41 +1,26 @@
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { getCategoriesList } from "../../../redux/Words/wordsSelectors";
-import Icon from "../../Icons/Icon";
 import {
   CustomRadioBtnWrpStyled,
-  FilterWrp,
-  IconWrp,
-  InputStyled,
-  InputWrp,
+  FormWrpStyled,
   RadioBtnLabel,
   RadioBtnWrp,
   RadioInputStyled,
   SelectStyled,
   SelectWrp,
-} from "./Filters.styled";
-import { useEffect, useState } from "react";
-import { debounce } from "lodash";
-import { getWordsAll } from "../../../redux/Words/wordsOperations";
+} from "./AddWordForm.styled";
+import Icon from "../../Icons/Icon";
+import { ReactComponent as Ukraine } from "../../../assets/images/ukraine.svg";
+import { ReactComponent as Ukingdom } from "../../../assets/images/united kingdom.svg";
 
-const Filters = () => {
-  const [searchWord, setSearchWord] = useState("");
+const AddWordForm = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [verbType, setVerbType] = useState("");
-  const dispatch = useDispatch();
-  
   const categories = useSelector(getCategoriesList);
 
-  const debouncedSearchWord = debounce((input)=> {
-    setSearchWord(input);
-  }, 300);
-
-  const handleChangeSearchInput = (event) => {
-    const sanitizedInput = event.target.value.trim();
-    debouncedSearchWord(sanitizedInput);
-  }
-
   const handleCategoryChange = (event) => {
-    const chosenCategory= event.target.value.toLowerCase();
+    const chosenCategory = event.target.value.toLowerCase();
     setSelectedCategory(chosenCategory);
   };
 
@@ -44,22 +29,8 @@ const Filters = () => {
     setVerbType(selectedVerbType);
   };
 
-  useEffect(()=>{
-    dispatch(getWordsAll({
-      keyword: searchWord,
-      category: selectedCategory,
-      isIrregular: verbType === "irregular" ? true : false,
-     }))
-  }, [searchWord, selectedCategory, verbType]);
-
   return (
-    <FilterWrp>
-      <InputWrp>
-        <InputStyled type="text" placeholder="Find the word" onChange={handleChangeSearchInput}/>
-        <IconWrp>
-          <Icon id="search" />
-        </IconWrp>
-      </InputWrp>
+    <FormWrpStyled>
       <SelectWrp>
         <SelectStyled name="select" onChange={handleCategoryChange}>
           <option value="" disabled hidden>
@@ -108,8 +79,24 @@ const Filters = () => {
           </RadioBtnLabel>
         </RadioBtnWrp>
       )}
-    </FilterWrp>
+      <div>
+        <div><Ukraine/> 
+        <p>Ukrainian</p>
+        </div>
+        <input type="text" />
+      </div>
+      <div>
+        <div><Ukingdom/> 
+        <p>English</p>
+        </div>
+        <input type="text" />
+      </div>
+      <div>
+        <button>Add</button>
+        <button>Cancel</button>
+      </div>
+    </FormWrpStyled>
   );
 };
 
-export default Filters;
+export default AddWordForm;

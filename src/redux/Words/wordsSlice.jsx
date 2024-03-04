@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCategoriesListThunk, getStatisticsThunk, getWordsAll } from "./wordsOperations";
+import { addWordThunk, getCategoriesListThunk, getStatisticsThunk, getWordsAll } from "./wordsOperations";
 
 const pending = (state) => {
   state.isLoading = true};
@@ -15,11 +15,17 @@ const initialState = {
   allWords: [],
   isLoading: false,
   error: null,
+  isModalOpen: false,
 };
 
 const wordsSlice = createSlice({
   name: "words",
   initialState,
+  reducers: {
+   openModalWindow(state, {payload}) {
+    state.isModalOpen = payload;
+   }
+  },
   extraReducers: (builder) =>
     builder
       .addCase(getCategoriesListThunk.pending, pending)
@@ -39,11 +45,22 @@ const wordsSlice = createSlice({
     .addCase(getWordsAll.pending, pending)
     .addCase(getWordsAll.rejected, rejected)
     .addCase(getWordsAll.fulfilled, (state, {payload})=>{
-      console.log(payload);
+      
       state.isLoading = false;
       state.error = null;
       state.allWords = payload.results;
     })
+    .addCase(addWordThunk.pending, pending)
+    .addCase(addWordThunk.rejected, rejected)
+    .addCase(addWordThunk.fulfilled, (state, {payload})=> {
+      console.log(payload);
+      state.allWords = state.allWords.push(payload);
+      state.isLoading = false;
+      state.error = null;
+      
+    })
+    
 });
 
 export const wordsReducer = wordsSlice.reducer;
+export const {openModalWindow} = wordsSlice.actions;
